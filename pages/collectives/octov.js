@@ -36,73 +36,201 @@ export default function Octov({ locale, availableLocales }) {
                     </div>
                 </div>
 
-
-
             </div>
 
             <div>
-                <p>Get your GoldEvent Ticket</p>
-                <ConnectWallet />
-            </div>
-
-            <button
-                className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button"
-                onClick={() => setShowModal(true)}
-            >
-                Buy your GoldEvent NFT
-            </button>
-            {showModal ? (
-                <>
-                    <div
-                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-                    >
-                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                            {/*content*/}
-                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                {/*header*/}
-                                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                    <h3 className="text-3xl font-semibold text-black">
-                                        Mint your NFT
-                                    </h3>
-                                    <button
-                                        className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                                        onClick={() => setShowModal(false)}
-                                    >
-                                        <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                                            ×
-                                        </span>
-                                    </button>
+                <section class="text-gray-600 body-font">
+                    <div class="container px-5 py-24 mx-auto">
+                        <div class="flex flex-wrap w-full mb-20">
+                            <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2">Octov Presentation</h1>
+                                <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+                            </div>
+                            <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+                        </div>
+                        <div class="flex flex-wrap -m-4">
+                            <div class="xl:w-1/4 md:w-1/2 p-4">
+                                <div class="bg-gray-100 p-6 rounded-lg">
+                                    <img class="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+                                    <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
+                                    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
+                                    <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
                                 </div>
-                                {/*body*/}
-                                <div className="relative p-6 flex-auto">
-                                    <p className="my-4 text-slate-500 text-lg leading-relaxed text-black">
-                                        NFT IMAGE
-                                    </p>
+                            </div>
+                            <div class="xl:w-1/4 md:w-1/2 p-4">
+                                <div class="bg-gray-100 p-6 rounded-lg">
+                                    <img class="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+                                    <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
+                                    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Colosseum Roma</h2>
+                                    <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
                                 </div>
-                                {/*footer*/}
-                                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                                    <button
-                                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="button"
-                                        onClick={() => setShowModal(false)}
-                                    >
-                                        Close
-                                    </button>
-                                    <button
-                                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="button"
-                                        onClick={() => setShowModal(false)}
-                                    >
-                                        Save Changes
-                                    </button>
+                            </div>
+                            <div class="xl:w-1/4 md:w-1/2 p-4">
+                                <div class="bg-gray-100 p-6 rounded-lg">
+                                    <img class="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+                                    <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
+                                    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Great Pyramid</h2>
+                                    <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+                                </div>
+                            </div>
+                            <div class="xl:w-1/4 md:w-1/2 p-4">
+                                <div class="bg-gray-100 p-6 rounded-lg">
+                                    <img class="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+                                    <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
+                                    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">San Francisco</h2>
+                                    <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                </>
-            ) : null}
+                </section>
+
+            </div>
+
+            <div className='border-t border-gray-700 pb-10' />
+            <div className='text-center'>
+                <Typography variant="h3">GoldEvent Access</Typography>
+            </div>
+
+            <div class="pt-10 flex items-center justify-center">
+
+                <card class="w-72 rounded-lg border shadow-md flex flex-col p-5 bg-white">
+
+
+                    <div class="flex flex-col items-center">
+
+
+                        <img class="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+
+
+                        <button class="mt-10 rounded py-2 px-4 bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-50 text-sm">
+                            0.5 eth
+                        </button>
+
+
+
+
+
+                        <div class="h-0.5 bg-gray-200 w-full my-5"> </div>
+
+                    </div>
+
+
+                    <div class="flex flex-col px-3">
+
+                        <p class="text-gray-700 text-sm font-light"> What you get </p>
+
+                        <div class="grid grid-cols-5 mt-3 gap-y-2">
+
+                            <div class="pl-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div class="col-span-4 text-sm font-light text-gray-700">
+                                Free tickets for all upcoming events
+                            </div>
+
+
+                            <div class="pl-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div class="col-span-4 text-sm font-light text-gray-700">
+                                -25% consommation reduction
+                            </div>
+
+
+                            <div class="pl-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div class="col-span-4 text-sm font-light text-gray-700">
+                                - 50% second tickets
+                            </div>
+
+                            <div class="pl-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div class="col-span-4 text-sm font-light text-gray-700">
+                                guaranteed access
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </card>
+
+            </div>
+            <div className='text-center'>
+                <div class="grid grid-cols-2 gap-2 pt-10">
+                    <div>
+                        <button
+                            className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 justify-center"
+                            type="button"
+                            onClick={() => setShowModal(true)}
+                        >
+                            Buy your GoldEvent NFT
+                        </button>
+                        {showModal ? (
+                            <>
+                                <div
+                                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                                >
+                                    <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                        {/*content*/}
+                                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                            {/*header*/}
+                                            <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                                                <h3 className="text-3xl font-semibold text-black text-center">
+                                                    Buy your GoldEvent GEN0
+                                                </h3>
+                                                <button
+                                                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                                                    onClick={() => setShowModal(false)}
+                                                >
+                                                </button>
+                                            </div>
+                                            {/*body*/}
+                                            <div className="relative p-6 flex-auto">
+                                                <p className="my-4 text-slate-500 text-lg leading-relaxed text-black">
+                                                    NFT IMAGE111
+                                                </p>
+                                            </div>
+                                            {/*footer*/}
+                                            <div className="flex items-center justify-center p-6 border-t border-solid border-slate-200 rounded-b">
+                                                <button
+                                                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                    type="button"
+                                                    onClick={() => setShowModal(false)}
+                                                >
+                                                    Close
+                                                </button>
+                                                <button
+                                                    className="bg-emerald-500 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                    type="button"
+                                                    onClick={() => setShowModal(false)}
+                                                >
+                                                    Buy
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                            </>
+                        ) : null}
+                    </div>
+                    <ConnectWallet />
+                </div>
+            </div>
+
+
 
 
 

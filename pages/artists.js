@@ -16,7 +16,7 @@ export default function Artists({ locale, availableLocales }) {
                 availableLocales={availableLocales}
             />
             <div className='text-center'>
-                <Typography variant="h3">Coming Soon</Typography>
+                <Typography variant="h3">🔊Coming Soon</Typography>
             </div>
 
         </>

@@ -16,9 +16,9 @@ export default function Marketplace({ locale, availableLocales }) {
                 availableLocales={availableLocales}
             />
             <div className='text-center'>
-                <Typography variant="h3">Coming Soon</Typography>
+                <Typography variant="h3">💸Coming Soon</Typography>
             </div>
 
         </>
-    )
+    ) 
 }

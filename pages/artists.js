@@ -1,5 +1,4 @@
 
-import siteMetadata from '@/data/siteMetadata';
 import useTranslation from 'next-translate/useTranslation';
 import Typography from '@material-ui/core/Typography';
 
@@ -13,5 +12,5 @@ export default function Artists({ locale, availableLocales }) {
             </div>
 
         </>
-    )
+    );
 }

@@ -14,9 +14,9 @@ export default function Octov({ locale, availableLocales }) {
 
     return (
         <>
-            <div className='text-center'>
+            <div className="text-center">
                 <Typography variant="h3">Octov</Typography>
-                <div className='border-t border-gray-700 pb-1 pt-1' />
+                <div className="border-t border-gray-700 pb-1 pt-1" />
                 <div className="flex flex-col items-center">
                     <div className="flex mb-3 space-x-4">
                         <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size="6" />
@@ -74,8 +74,8 @@ export default function Octov({ locale, availableLocales }) {
                     </div>
                 </section>
             </div>
-            <div className='border-t border-gray-700 pb-10' />
-            <div className='text-center'>
+            <div className="border-t border-gray-700 pb-10" />
+            <div className="text-center">
                 <Typography variant="h3">GoldEvent Access</Typography>
             </div>
             <div className="pt-10 flex items-center justify-center">
@@ -127,7 +127,7 @@ export default function Octov({ locale, availableLocales }) {
                     </div>
                 </card>
             </div>
-            <div className='text-center'>
+            <div className="text-center">
                 <div className="grid grid-cols-2 gap-2 pt-10">
                     <div>
                         <button
@@ -193,5 +193,5 @@ export default function Octov({ locale, availableLocales }) {
                 </div>
             </div>
         </>
-    )
+    );
 }

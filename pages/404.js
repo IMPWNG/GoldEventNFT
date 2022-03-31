@@ -2,7 +2,7 @@ import Link from '@/components/Link';
 import useTranslation from 'next-translate/useTranslation';
 
 export default function FourZeroFour() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col items-start justify-start md:justify-center md:items-center md:flex-row md:space-x-6 md:mt-24">
       <div className="pt-6 pb-8 space-x-2 md:space-y-5">
@@ -20,5 +20,5 @@ export default function FourZeroFour() {
         </Link>
       </div>
     </div>
-  )
+  );
 }

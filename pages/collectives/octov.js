@@ -1,4 +1,5 @@
 import siteMetadata from '@/data/siteMetadata';
+import image from 'next/image';
 import { useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import Typography from '@material-ui/core/Typography';
@@ -40,7 +41,7 @@ export default function Octov({ locale, availableLocales }) {
                         <div className="flex flex-wrap -m-4">
                             <div className="xl:w-1/4 md:w-1/2 p-4">
                                 <div className="bg-gray-100 p-6 rounded-lg">
-                                    <img className="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+                                    <image className="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
                                     <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
                                     <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
                                     <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
@@ -48,7 +49,7 @@ export default function Octov({ locale, availableLocales }) {
                             </div>
                             <div className="xl:w-1/4 md:w-1/2 p-4">
                                 <div className="bg-gray-100 p-6 rounded-lg">
-                                    <img className="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+                                    <image className="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
                                     <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
                                     <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Colosseum Roma</h2>
                                     <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
@@ -56,7 +57,7 @@ export default function Octov({ locale, availableLocales }) {
                             </div>
                             <div className="xl:w-1/4 md:w-1/2 p-4">
                                 <div className="bg-gray-100 p-6 rounded-lg">
-                                    <img className="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+                                    <image className="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
                                     <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
                                     <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Great Pyramid</h2>
                                     <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
@@ -64,7 +65,7 @@ export default function Octov({ locale, availableLocales }) {
                             </div>
                             <div className="xl:w-1/4 md:w-1/2 p-4">
                                 <div className="bg-gray-100 p-6 rounded-lg">
-                                    <img className="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+                                    <image className="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
                                     <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
                                     <h2 className="text-lg text-gray-900 font-medium title-font mb-4">San Francisco</h2>
                                     <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
@@ -81,7 +82,7 @@ export default function Octov({ locale, availableLocales }) {
             <div className="pt-10 flex items-center justify-center">
                 <card className="w-72 rounded-lg border shadow-md flex flex-col p-5 bg-white">
                     <div className="flex flex-col items-center">
-                        <img className="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
+                        <image className="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
                         <button className="mt-10 rounded py-2 px-4 bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-50 text-sm">
                             0.5 eth
                         </button>
@@ -91,8 +92,8 @@ export default function Octov({ locale, availableLocales }) {
                         <p className="text-gray-700 text-sm font-light"> What you get </p>
                         <div className="grid grid-cols-5 mt-3 gap-y-2">
                             <div className="pl-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <div className="col-span-4 text-sm font-light text-gray-700">
@@ -100,24 +101,24 @@ export default function Octov({ locale, availableLocales }) {
                             </div>
 
                             <div className="pl-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <div className="col-span-4 text-sm font-light text-gray-700">
                                 -25% consommation reduction
                             </div>
                             <div className="pl-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <div className="col-span-4 text-sm font-light text-gray-700">
                                 - 50% second tickets
                             </div>
                             <div className="pl-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563eb" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <div className="col-span-4 text-sm font-light text-gray-700">

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import Link from 'next/link'
+import Link from 'next/link';
 
 const CustomLink = ({ href, ...rest }) => {
   const isInternalLink = href && href.startsWith('/')
@@ -20,4 +20,4 @@ const CustomLink = ({ href, ...rest }) => {
   return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />
 }
 
-export default CustomLink
+export default CustomLink;

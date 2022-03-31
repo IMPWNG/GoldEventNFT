@@ -1,22 +1,12 @@
-
-import { PageSEO } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
-import Link from '../components/Link'
-
-
-import useTranslation from 'next-translate/useTranslation'
-import Typography from '@material-ui/core/Typography'
+import Link from '../components/Link';
+import useTranslation from 'next-translate/useTranslation';
+import Typography from '@material-ui/core/Typography';
 
 export default function Collectives({ locale, availableLocales }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <>
-      <PageSEO
-        title={siteMetadata.title[locale]}
-        description={siteMetadata.description[locale]}
-        availableLocales={availableLocales}
-      />
       <div class="container justify-center flex flex-wrap">
         <div class="max-w-sm py-10 pr-10 pl-10">
           <div class="bg-stone-400 relative shadow-2xl hover:shadow-xl transition duration-500 rounded-lg border-slate-400">
@@ -35,10 +25,6 @@ export default function Collectives({ locale, availableLocales }) {
             </div>
           </div>
         </div>
-
-
-
-        
         <div class="max-w-sm py-10 pr-10 pl-10">
           <div class="bg-stone-400 relative shadow-2xl hover:shadow-xl transition duration-500 rounded-lg border-slate-400">
             <img class="rounded-t-lg" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" />
@@ -91,8 +77,6 @@ export default function Collectives({ locale, availableLocales }) {
           </div>
         </div>
       </div>
-
-
     </>
   )
 }

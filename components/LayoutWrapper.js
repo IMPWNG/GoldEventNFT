@@ -1,25 +1,24 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import siteMetadata from '@/data/siteMetadata'
-import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
-import Link from './Link'
-import SectionContainer from './SectionContainer'
-import Footer from './Footer'
-import MobileNav from './MobileNav'
-import ThemeSwitch from './ThemeSwitch'
-
-import useTranslation from 'next-translate/useTranslation'
-import { useRouter } from 'next/router'
+import siteMetadata from '@/data/siteMetadata';
+import headerNavLinks from '@/data/headerNavLinks';
+import Logo from '@/data/logo.svg';
+import Link from './Link';
+import SectionContainer from './SectionContainer';
+import Footer from './Footer';
+import MobileNav from './MobileNav';
+import ThemeSwitch from './ThemeSwitch';
+import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 
 const LayoutWrapper = ({ children }) => {
-  const { t } = useTranslation()
-  const router = useRouter()
-  const { locale, locales, defaultLocale } = router
+  const { t } = useTranslation();
+  const router = useRouter();
+  const { locale, locales, defaultLocale } = router;
 
   const changeLanguage = (e) => {
     const locale = e.target.value
     router.push(router.asPath, router.asPath, { locale })
-  }
+  };
 
   return (
     <SectionContainer>
@@ -76,4 +75,4 @@ const LayoutWrapper = ({ children }) => {
   )
 }
 
-export default LayoutWrapper
+export default LayoutWrapper;

@@ -7,6 +7,9 @@ export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider attribute="class">
       <Head>
+      <title>
+        GoldEvent
+      </title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
       <LayoutWrapper>

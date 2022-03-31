@@ -1,8 +1,14 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 
-const nextTranslate = require('next-translate')
+const nextTranslate = require('next-translate');
+
+module.exports = {
+  images: {
+    disableStaticImages: false
+  }
+}
 
 module.exports = nextTranslate(
   withBundleAnalyzer({
@@ -43,4 +49,5 @@ module.exports = nextTranslate(
       return config
     },
   })
+  
 )

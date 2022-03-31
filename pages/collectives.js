@@ -1,6 +1,7 @@
 import Link from '../components/Link';
 import useTranslation from 'next-translate/useTranslation';
-import image from 'next/image';
+import Image from 'next/image';
+
 
 export default function Collectives({ locale, availableLocales }) {
   const { t } = useTranslation();

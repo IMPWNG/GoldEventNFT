@@ -1,22 +1,57 @@
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
+import ErrorMessage from "./ErrorMessage";
 
 
 const MintBtn = () => {
-    const [mintedNFT, setMintedNFT] = useState(null)
-    const [miningStatus, setMiningStatus] = useState(null)
-    const [loadingState, setLoadingState] = useState(0)
-    const [txError, setTxError] = useState(null)
-    const [currentAccount, setCurrentAccount] = useState('')
-    const [correctNetwork, setCorrectNetwork] = useState(false)
+    const networks = {
+        polygon: {
+            chainId: `0x${Number(137).toString(16)}`,
+            chainName: "Polygon Mainnet",
+            nativeCurrency: {
+                name: "MATIC",
+                symbol: "MATIC",
+                decimals: 18
+            },
+            rpcUrls: ["https://polygon-rpc.com/"],
+            blockExplorerUrls: ["https://polygonscan.com/"]
+        },
+    };
+    const changeNetwork = async ({ networkName, setError }) => {
+        try {
+            if (!window.ethereum) throw new Error("No crypto wallet found");
+            await window.ethereum.request({
+                method: "wallet_addEthereumChain",
+                params: [
+                    {
+                        ...networks[networkName]
+                    }
+                ]
+            });
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+    const [error, setError] = useState();
+    const handleNetworkSwitch = async (networkName) => {
+        setError();
+        await changeNetwork({ networkName, setError });
+    };
+
+    const networkChanged = (chainId) => {
+        console.log({ chainId });
+    };
+
+    const [currentAccount, setCurrentAccount] = useState('');
+    const [correctNetwork, setCorrectNetwork] = useState(false);
+
 
     // Checks if wallet is connected
     const checkIfWalletIsConnected = async () => {
         const { ethereum } = window
         if (ethereum) {
-            console.log('Got the ethereum obejct: ', ethereum)
+            console.log('Got the ethereum object: ', ethereum)
         } else {
             console.log('No Wallet found. Connect Wallet')
         }
@@ -29,7 +64,7 @@ const MintBtn = () => {
         } else {
             console.log('No authorized account found')
         }
-    }
+    };
     // Calls Metamask to connect wallet on clicking Connect Wallet button
     const connectWallet = async () => {
         try {
@@ -56,7 +91,8 @@ const MintBtn = () => {
         } catch (error) {
             console.log('Error connecting to metamask', error)
         }
-    }
+    };
+    
 
     // Checks if wallet is connected to the correct network
     const checkCorrectNetwork = async () => {
@@ -71,12 +107,16 @@ const MintBtn = () => {
         } else {
             setCorrectNetwork(true)
         }
-    }
+    };
 
     useEffect(() => {
-        checkIfWalletIsConnected()
-        checkCorrectNetwork()
-    }, [])
+        checkIfWalletIsConnected();
+        checkCorrectNetwork();
+        window.ethereum.on("chainChanged", networkChanged);
+        return () => {
+            window.ethereum.removeListener("chainChanged", networkChanged);
+        };
+    }, []);
 
 
     return (
@@ -102,17 +142,17 @@ const MintBtn = () => {
                 <button
                             className="flex font-bold"
                             type="button"
+                                onClick={() => handleNetworkSwitch("polygon")}
                 >
-                            <svg className="mr-1 mt-1 justify-center content-center" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <svg className="hidden md:block mr-2 justify-center content-center" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                             </svg>
-                    Wrong Network
-                            
-                                
-                            
+                    Switch to the right Network           
                 </button>
                         </Tooltip>
+                        
             )}
+            <ErrorMessage message={error} />
         </div>
 
 

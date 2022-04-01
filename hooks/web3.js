@@ -37,8 +37,8 @@ export function useWeb3Modal() {
 
             setProvider(ethersProvider);
         } catch (e) {
-            setError('NO_WALLET_CONNECTED');
-            console.log('NO_WALLET_CONNECTED', e);
+            setError('Error connecting to metamask');
+            console.log('Error connecting to metamask', e);
         }
     }
 

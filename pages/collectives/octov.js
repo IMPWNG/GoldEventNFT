@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import SocialIcon from '@/components/social-icons';
 import dynamic from 'next/dynamic';
 import MintBtn from '@/components/MintBtn';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
 
 const ConnectWallet = dynamic(() => import('../../components/ConnectWallet'), {
     ssr: false,
@@ -173,6 +175,9 @@ export default function Octov({ locale, availableLocales }) {
                                                 <p className="my-4 text-slate-500 text-lg leading-relaxed text-black">
                                                     NFT IMAGE111
                                                 </p>
+                                                <Tooltip disableFocusListener title="Add">
+                                                    <Button>Hover or touch</Button>
+                                                </Tooltip>
                                             </div>
                                             {/*footer*/}
                                             <div className="grid grid-cols-2 gap-2 pt-5 pb-5">

@@ -37,7 +37,7 @@ const ConnectWallet = () => {
             onClick={signerAddress ? handleClickAddress : handleClickConnect}
         >
             <div>
-                {signerAddress ? truncateAddress(signerAddress) : 'Connect Wallet'}
+                {signerAddress ? truncateAddress(signerAddress) : 'Download your Ticket'}
             </div>
         </button>
         

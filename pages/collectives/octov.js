@@ -1,19 +1,76 @@
 import siteMetadata from 'data/siteMetadata';
-import { useState } from 'react';
-import useTranslation from 'next-translate/useTranslation';
+import { useRef, useState } from 'react';
+
 import Typography from '@material-ui/core/Typography';
 import SocialIcon from 'components/social-icons';
 import dynamic from 'next/dynamic';
 import MintBtn from 'components/MintBtn';
-
+import axios from 'axios';
+import Web3Modal from 'web3modal';
 
 const ConnectWallet = dynamic(() => import('../../components/ConnectWallet'), {
     ssr: false,
 });
 
+
 export default function Octov({ locale, availableLocales }) {
-    const { t } = useTranslation();
+
     const [showModal, setShowModal] = useState(false);
+    // Constants
+  const MINT_PRICE = 0.03;
+  const MAX_MINT = 1;
+
+  // UI state
+  const [mintQuantity, setMintQuantity] = useState(1);
+  const mintQuantityInputRef = useRef();
+  const [mintError, setMintError] = useState(false);
+  const [mintMessage, setMintMessage] = useState('');
+  const [mintLoading, setMintLoading] = useState(false);
+
+  async function mintNFTs() {
+    // Check quantity
+    if ( mintQuantity < 1 ) {
+      setMintMessage('You need to mint at least 1 NFT.')
+      setMintError(true)
+      mintQuantityInputRef.current.focus()
+      return
+    }
+    if ( mintQuantity > MAX_MINT ) {
+      setMintMessage('You can only mint a maximum of 10 NFTs.')
+      setMintError(true)
+      mintQuantityInputRef.current.focus()
+      return
+    }
+
+    // Get wallet details
+    if(!hasEthereum()) return
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner()
+
+      try {
+        const address = await signer.getAddress()
+
+        setMintLoading(true);
+          // Interact with contract
+          const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, signer)
+          const totalPrice = MINT_PRICE * mintQuantity
+          const transaction = await contract.mint(mintQuantity, { value: ethers.utils.parseEther(totalPrice.toString()) })
+          await transaction.wait()
+
+          mintQuantityInputRef.current.value = 0
+          setMintMessage(`Congrats, you minted ${mintQuantity} token(s)!`)
+          setMintError(false)
+      } catch {
+        setMintMessage('Connect your wallet first.');
+        setMintError(true)
+      }
+    } catch(error) {
+        setMintMessage(error.message)
+        setMintError(true)
+    }
+    setMintLoading(false)
+  }
 
     return (
         <>

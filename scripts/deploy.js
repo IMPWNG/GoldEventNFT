@@ -1,14 +1,17 @@
-const hre = require("hardhat");
 const fs = require('fs');
 
 async function main() {
-  const NFTMarketplace = await hre.ethers.getContractFactory("NFTMarketplace");
-  const nftMarketplace = await NFTMarketplace.deploy();
-  await nftMarketplace.deployed();
-  console.log("nftMarketplace deployed to:", nftMarketplace.address);
+
+  const GoldEventNFT = await ethers.getContractFactory("GoldEventNFT");
+  const goldEventNFT = await GoldEventNFT.deploy();
+  await goldEventNFT.deployed();
+  const txHash = goldEventNFT.deployTransaction.hash
+  const txReceipt = await ethers.provider.waitForTransaction(txHash)
+  const contractAddress = txReceipt.contractAddress
+  console.log("goldEventNFT deployed to:", goldEventNFT.address);
 
   fs.writeFileSync('./config.js', `
-  export const marketplaceAddress = "${nftMarketplace.address}"
+  export const goldEventNFT = "${goldEventNFT.address}"
   `)
 }
 

@@ -1,11 +1,11 @@
-const CONTRACT_ADDRESS = "0x7785718A487EE9D92767de93E691c2F9E2d66cF6"
-const META_DATA_URL = "ipfs://bafyreif6av76pktlokhuojjuuy5pl66wiaki7c47j4o3x3qgxlpxnxtg7u/metadata.json"
+const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS
+const META_DATA_URL = process.env.META_DATA_URL
+const baseURI = 
 
-async function mint(contractAddress, metaDataURL) {
-   const GoldEventNFT = await ethers.getContractFactory("GoldEventNFT")
-   const [owner] = await ethers.getSigners()
-   await GoldEventNFT.attach(contractAddress).mint(owner.address, metaDataURL)
-   console.log("GoldEventNFT minted to: ", owner.address)
+async function mint(contractAddress) {
+   const GoldEventGen0 = await ethers.getContractFactory("GoldEventGen0")
+   const tx = await GoldEventGen0.attach(contractAddress).mint(1)
+   console.log("GoldEventGen0 tx: ", tx.hash)
 }
 
 mint(CONTRACT_ADDRESS, META_DATA_URL)

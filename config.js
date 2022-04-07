@@ -1,3 +1,3 @@
 
-  export const goldEventNFT = "0x077d59757D574350b3Af35E016f0221E295dF1fb"
+  export const goldEventGen0 = "0x7188f2628cB4a0af426720c25EE2c04F9fC6651F"
   

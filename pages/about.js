@@ -60,7 +60,7 @@ export default function About({ color = 'emerald' }) {
                       href="#link2"
                       role="tablist"
                     >
-                      <i className="fas fa-cog text-base mr-1"></i> How to use it ?
+                      <i className="fas fa-cog text-base mr-1"></i> GoldEventGen0
                     </a>
                   </li>
                   <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -79,7 +79,7 @@ export default function About({ color = 'emerald' }) {
                       href="#link3"
                       role="tablist"
                     >
-                      <i className="fas fa-briefcase text-base mr-1"></i> How to sell it ?
+                      <i className="fas fa-briefcase text-base mr-1"></i> GoldEventX
                     </a>
                   </li>
                 </ul>

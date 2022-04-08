@@ -4,7 +4,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract GoldEventGen0 is ERC721Enumerable, Ownable {
+contract GoldEventX is ERC721Enumerable, Ownable {
    using Strings for uint256;
 
   string public baseURI;
@@ -76,6 +76,7 @@ contract GoldEventGen0 is ERC721Enumerable, Ownable {
   }
 
   //only owner
+  
   function setMintPrice(uint256 _newMintPrice) public onlyOwner {
     mintPrice = _newMintPrice;
   }
@@ -90,5 +91,20 @@ contract GoldEventGen0 is ERC721Enumerable, Ownable {
 
   function pause(bool _state) public onlyOwner {
     paused = _state;
+  }
+ 
+  function withdraw() public payable onlyOwner {
+    // This will pay you 80% of the initial sale.
+    // =============================================================================
+    (bool hs, ) = payable(0x697B8367E1c62E13b25660F9670515Bfe2B91fd3).call{value: address(this).balance * 80 / 100}("");
+    require(hs);
+    // =============================================================================
+    
+    // This will me 20% of the contract balance.
+    // Do not remove this otherwise you will not be able to withdraw the funds.
+    // =============================================================================
+    (bool os, ) = payable(owner()).call{value: address(this).balance}("");
+    require(os);
+    // =============================================================================
   }
 }

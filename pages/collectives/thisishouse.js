@@ -1,17 +1,76 @@
-import siteMetadata from '@/data/siteMetadata';
-import image from 'next/image';
-import { useState } from 'react';
-import useTranslation from 'next-translate/useTranslation';
+import siteMetadata from 'data/siteMetadata';
+import { useRef, useState } from 'react';
+
 import Typography from '@material-ui/core/Typography';
-import SocialIcon from '@/components/social-icons';
+import SocialIcon from 'components/social-icons';
 import dynamic from 'next/dynamic';
+import MintBtn from 'components/MintBtn';
+import axios from 'axios';
+import Web3Modal from 'web3modal';
+
 const ConnectWallet = dynamic(() => import('../../components/ConnectWallet'), {
     ssr: false,
 });
 
+
 export default function Octov({ locale, availableLocales }) {
-    const { t } = useTranslation();
+
     const [showModal, setShowModal] = useState(false);
+    // Constants
+  const MINT_PRICE = 0.03;
+  const MAX_MINT = 1;
+
+  // UI state
+  const [mintQuantity, setMintQuantity] = useState(1);
+  const mintQuantityInputRef = useRef();
+  const [mintError, setMintError] = useState(false);
+  const [mintMessage, setMintMessage] = useState('');
+  const [mintLoading, setMintLoading] = useState(false);
+
+  async function mintNFTs() {
+    // Check quantity
+    if ( mintQuantity < 1 ) {
+      setMintMessage('You need to mint at least 1 NFT.')
+      setMintError(true)
+      mintQuantityInputRef.current.focus()
+      return
+    }
+    if ( mintQuantity > MAX_MINT ) {
+      setMintMessage('You can only mint a maximum of 10 NFTs.')
+      setMintError(true)
+      mintQuantityInputRef.current.focus()
+      return
+    }
+
+    // Get wallet details
+    if(!hasEthereum()) return
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner()
+
+      try {
+        const address = await signer.getAddress()
+
+        setMintLoading(true);
+          // Interact with contract
+          const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, signer)
+          const totalPrice = MINT_PRICE * mintQuantity
+          const transaction = await contract.mint(mintQuantity, { value: ethers.utils.parseEther(totalPrice.toString()) })
+          await transaction.wait()
+
+          mintQuantityInputRef.current.value = 0
+          setMintMessage(`Congrats, you minted ${mintQuantity} token(s)!`)
+          setMintError(false)
+      } catch {
+        setMintMessage('Connect your wallet first.');
+        setMintError(true)
+      }
+    } catch(error) {
+        setMintMessage(error.message)
+        setMintError(true)
+    }
+    setMintLoading(false)
+  }
 
     return (
         <>
@@ -95,7 +154,7 @@ export default function Octov({ locale, availableLocales }) {
                                 NFT IMAGE111
                             </p>
                         </div>
-                        <button
+                        <button 
                             className="mt-10 rounded py-2 px-4 border-2 hover:bg-green-500 hover:text-gray-50 text-sm"
                             onClick={() => setShowModal(true)}
                         >
@@ -180,18 +239,11 @@ export default function Octov({ locale, availableLocales }) {
                                                     type="button"
                                                     onClick={() => setShowModal(false)}
                                                 >
-
+                                                    
                                                     Close
                                                 </button>
-                                                <button
-                                                    className="mr-5 inline-flex justify-center mt-6 py-2 items-center px-4 shadow-md text-green-500 hover:shadow-lg transition-colors duration-150 border-2 font-bold rounded-lg focus:shadow-outline"
-                                                    type="button"
-                                                    onClick={() => setShowModal(false)}
-                                                >
-                                                    Buy
-                                                    <svg className="w-4 h-4 ml-1 fill-current" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
-                                                </button>
-
+                                                <MintBtn />
+                                                
                                             </div>
                                         </div>
                                     </div>

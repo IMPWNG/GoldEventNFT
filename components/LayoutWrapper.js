@@ -52,7 +52,7 @@ const LayoutWrapper = ({ children }) => {
                 </Link>
               ))}
             </div>
-            <select
+            {/* <select
               onChange={changeLanguage}
               defaultValue={locale}
               style={{ textAlignLast: 'center' }}
@@ -63,7 +63,7 @@ const LayoutWrapper = ({ children }) => {
                   {e}
                 </option>
               ))}
-            </select>
+            </select> */}
             <ThemeSwitch />
             <MobileNav />
           </div>

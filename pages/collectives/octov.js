@@ -93,7 +93,7 @@ export default function Octov({ locale, availableLocales }) {
                         <div className="flex flex-wrap w-full mb-20">
                             <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
                                 <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2">Octov Presentation</h1>
-                                <div className="h-1 w-20 bg-gray-700 rounded"></div>
+                                <div className="h-1 w-20 bg-yellow-500 rounded"></div>
                             </div>
                             <p className="lg:w-1/2 w-full leading-relaxed">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
                         </div>

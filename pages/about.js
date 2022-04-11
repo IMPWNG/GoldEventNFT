@@ -31,7 +31,7 @@ export default function About({ color = 'emerald' }) {
                         'text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal ' +
                         (openTab === 1
                           ? 'text-white bg-yellow-500'
-                          : 'text-' + color + '-600 bg-white')
+                          : 'text-' + color + '-600 ')
                       }
                       onClick={(e) => {
                         e.preventDefault();
@@ -50,7 +50,7 @@ export default function About({ color = 'emerald' }) {
                         'text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal ' +
                         (openTab === 2
                           ? 'text-white bg-yellow-500'
-                          : 'text-' + color + '-600 bg-white')
+                          : 'text-' + color + '-600')
                       }
                       onClick={(e) => {
                         e.preventDefault();
@@ -69,7 +69,7 @@ export default function About({ color = 'emerald' }) {
                         'text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal ' +
                         (openTab === 3
                           ? 'text-white bg-yellow-500'
-                          : 'text-' + color + '-600 bg-white')
+                          : 'text-' + color + '-600')
                       }
                       onClick={(e) => {
                         e.preventDefault();
@@ -83,7 +83,7 @@ export default function About({ color = 'emerald' }) {
                     </a>
                   </li>
                 </ul>
-                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded">
                   <div className="px-4 py-5 flex-auto">
                     <div className="tab-content tab-space">
                       <div className={openTab === 1 ? 'block' : 'hidden'} id="link1">
@@ -91,7 +91,7 @@ export default function About({ color = 'emerald' }) {
                           <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +121,7 @@ export default function About({ color = 'emerald' }) {
                             </div>
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +151,7 @@ export default function About({ color = 'emerald' }) {
                             </div>
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +178,7 @@ export default function About({ color = 'emerald' }) {
                             </div>
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -216,7 +216,7 @@ export default function About({ color = 'emerald' }) {
                           <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +246,7 @@ export default function About({ color = 'emerald' }) {
                             </div>
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -276,7 +276,7 @@ export default function About({ color = 'emerald' }) {
                             </div>
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -303,7 +303,7 @@ export default function About({ color = 'emerald' }) {
                             </div>
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -341,7 +341,7 @@ export default function About({ color = 'emerald' }) {
                           <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -371,7 +371,7 @@ export default function About({ color = 'emerald' }) {
                             </div>
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -401,7 +401,7 @@ export default function About({ color = 'emerald' }) {
                             </div>
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -428,7 +428,7 @@ export default function About({ color = 'emerald' }) {
                             </div>
                             <div className="relative">
                               <dt>
-                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
                                   <svg
                                     className="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"

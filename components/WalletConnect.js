@@ -2,22 +2,21 @@ import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import { hasEthereum, requestAccount } from '../utils/ethereum';
 
-// const truncateAddress = (address) => {
-//   return address.slice(0, 6) + ' ... ' + address.slice(-4);
-// };
+const truncateAddress = (address) => {
+  return address.slice(0, 6) + ' ... ' + address.slice(-4);
+};
 
-export default function DownloadTicker() {
+export default function ConnectWallet() {
   // UI state
   const [loading, setLoading] = useState(true);
   const [connected, setConnected] = useState(false);
-  const [messageWallet, setMessageWallet] = useState('Connect wallet');
-  const [messageTicket] = useState('Download your Ticket');
+  const [message, setMessage] = useState('Connect wallet');
 
   // First load
   useEffect(function () {
     async function fetchConnectedAccount() {
       if (!hasEthereum()) {
-        setMessageWallet('Install MetaMask');
+        setMessage('Install MetaMask');
         setLoading(false);
         return;
       }
@@ -35,10 +34,10 @@ export default function DownloadTicker() {
       if (!hasEthereum()) return;
       window.ethereum.on('accountsChanged', async function (accounts) {
         if (accounts && accounts[0]) {
-          setMessageWallet(accounts[0]);
+          setMessage(accounts[0]);
         } else {
           setConnected(false);
-          setMessageWallet('Connect wallet');
+          setMessage('Connect wallet');
         }
       });
     }
@@ -51,7 +50,7 @@ export default function DownloadTicker() {
     try {
       await requestAccount();
     } catch (error) {
-      if (error.message) setMessageWallet(error.message);
+      if (error.message) setMessage(error.message);
     }
   }
 
@@ -64,10 +63,10 @@ export default function DownloadTicker() {
 
       if (address) {
         setConnected(true);
-        setMessageWallet(address);
+        setMessage(address);
       }
     } catch {
-      setMessageWallet('Connect wallet');
+      setMessage('Connect wallet');
     }
   }
 
@@ -85,11 +84,11 @@ export default function DownloadTicker() {
     <button
       className="border-2 justify-center mt-6 py-2 px-4 font-bold rounded-lg shadow-md hover:shadow-lg"
       onClick={handleConnectWallet}
-      disabled={connected || messageWallet === 'Install MetaMask'}
+      disabled={connected || message === 'Install MetaMask'}
     >
       {!loading ? (
         <>
-          <div>{(messageTicket)}</div>
+          <div>{message ? truncateAddress(message) : 'Download your Ticket'}</div>
         </>
       ) : (
         <span>Loading...</span>
@@ -97,5 +96,3 @@ export default function DownloadTicker() {
     </button>
   );
 }
-
-

@@ -1,154 +1,182 @@
-import { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
+import { useState, useRef, useEffect } from 'react';
 import Tooltip from '@mui/material/Tooltip';
-import ErrorMessage from "./ErrorMessage";
+import { hasEthereum } from '../utils/ethereum';
+import WalletConnect from './WalletConnect';
+import GoldEventGen0 from '../artifacts/contracts/GoldEventGen0.sol/GoldEventGen0.json';
+import { ethers } from 'ethers';
+import projectConfig from 'config/config';
+import { FaMinusCircle, FaPlusCircle } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
+import { useWeb3React } from '@web3-react/core';
 
+export default function MintBtn() {
 
-const MintBtn = () => {
-    const networks = {
-        polygon: {
-            chainId: `0x${Number(137).toString(16)}`,
-            chainName: "Polygon Mainnet",
-            nativeCurrency: {
-                name: "MATIC",
-                symbol: "MATIC",
-                decimals: 18
-            },
-            rpcUrls: ["https://polygon-rpc.com/"],
-            blockExplorerUrls: ["https://polygonscan.com/"]
-        },
-    };
-    const changeNetwork = async ({ networkName, setError }) => {
-        try {
-            if (!window.ethereum) throw new Error("No crypto wallet found");
-            await window.ethereum.request({
-                method: "wallet_addEthereumChain",
-                params: [
-                    {
-                        ...networks[networkName]
-                    }
-                ]
-            });
-        } catch (err) {
-            setError(err.message);
+  //Mint Constants
+  const MINT_PRICE = 0.03;
+  const MAX_MINT = 10;
+  const MIN_MINT = 1; 
+  
+  // UI state
+  const [mintQuantity, setMintQuantity] = useState(1);
+  const mintQuantityInputRef = useRef();
+  const [mintError, setMintError] = useState(false);
+  const [mintMessage, setMintMessage] = useState('');
+  const [isPending, setIsPending] = useState(false);
+  const [isMinting, setIsMinting] = useState(false);
+  const { account, active, chainId } = useWeb3React();
+  const [connErrMsg, setConnErrMsg] = useState('');
+
+    async function mintTicket() {
+
+      // Check quantity
+      if (mintQuantity < 1) {
+        setMintMessage('You need to mint at least 1 Tickets.');
+        setMintError(true);
+        mintQuantityInputRef.current.focus();
+        return;
+      }
+      if (mintQuantity > MAX_MINT) {
+        setMintMessage('You can only mint a maximum of 10 Tickets.');
+        setMintError(true);
+        mintQuantityInputRef.current.focus();
+        return;
+      }
+
+    }
+
+    // Increment decerement count
+
+      const decrementMintQuantity = () => {
+        if (mintQuantity > 1) {
+          setMintQuantity(mintQuantity - 1);
         }
-    };
-    const [error, setError] = useState();
-    const handleNetworkSwitch = async (networkName) => {
-        setError();
-        await changeNetwork({ networkName, setError });
-    };
+      }
 
-    const networkChanged = (chainId) => {
-        console.log({ chainId });
-    };
+      const incrementMintQuantity = () => {
+        if (mintQuantity < projectConfig.maxMintAmountPerTxn) {
+          setMintQuantity(mintQuantity + 1);
+        }
+      }
 
-    const [currentAccount, setCurrentAccount] = useState('');
-    const [correctNetwork, setCorrectNetwork] = useState(false);
-
-
-    // Checks if wallet is connected
-    const checkIfWalletIsConnected = async () => {
-        const { ethereum } = window
-        if (ethereum) {
-            console.log('Got the ethereum object: ', ethereum)
+      useEffect(() => {
+        if (!active) {
+          setConnErrMsg('Not connected to your wallet.');
         } else {
-            console.log('No Wallet found. Connect Wallet')
+          if (chainId !== projectConfig.chainId) {
+            setConnErrMsg(`Change the network to ${projectConfig.networkName}.`);
+          } else {
+            setConnErrMsg('');
+          }
         }
-
-        const accounts = await ethereum.request({ method: 'eth_accounts' })
-
-        if (accounts.length !== 0) {
-            console.log('Found authorized Account: ', accounts[0])
-            setCurrentAccount(accounts[0])
-        } else {
-            console.log('No authorized account found')
-        }
-    };
-    // Calls Metamask to connect wallet on clicking Connect Wallet button
-    const connectWallet = async () => {
-        try {
-            const { ethereum } = window
-
-            if (!ethereum) {
-                console.log('Metamask not detected')
-                return
-            }
-            let chainId = await ethereum.request({ method: 'eth_chainId' })
-            console.log('Connected to chain:' + chainId)
-
-            const rinkebyChainId = '0x4'
-
-            if (chainId !== rinkebyChainId) {
-                alert('You are not connected to the Rinkeby Testnet!')
-                return
-            }
-
-            const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
-
-            console.log('Found account', accounts[0])
-            setCurrentAccount(accounts[0])
-        } catch (error) {
-            console.log('Error connecting to metamask', error)
-        }
-    };
-    
-
-    // Checks if wallet is connected to the correct network
-    const checkCorrectNetwork = async () => {
-        const { ethereum } = window
-        let chainId = await ethereum.request({ method: 'eth_chainId' })
-        console.log('Connected to chain:' + chainId)
-
-        const rinkebyChainId = '0x4'
-
-        if (chainId !== rinkebyChainId) {
-            setCorrectNetwork(false)
-        } else {
-            setCorrectNetwork(true)
-        }
-    };
-
-   
+      }, [active, chainId]);
 
 
-    return (
 
-        <div className='mr-5 inline-flex justify-center mt-6 py-2 items-center px-4 shadow-md text-green-500 hover:shadow-lg transition-colors duration-150 border-2 rounded-lg focus:shadow-outline'>
-            {currentAccount === '' ? (
-                <button
-                    className="font-bold"
+  return (
+    <>
+      <div className="mr-5 inline-flex justify-center mt-6 py-2 items-center px-4 shadow-md text-green-500 hover:shadow-lg transition-colors duration-150 border-2 rounded-lg focus:shadow-outline">
+        <div className="grid grid-cols-6 gap-4">
+          <div className="col-start-2 col-span-4 border-2">
+            <span className="text-xl">{mintQuantity}</span>
+          </div>
+          <div className="pr-10 border-2 col-start-1 col-end-3">
+            <button
+              className={
+                mintQuantity <= 1 ? 'text-gray-500 cursor-default' : 'text-green-500 cursor-default'
+              }
+              onClick={decrementMintQuantity}
+            >
+              <FaMinusCircle />
+            </button>
+          </div>
+          <div className="pl-10 border-2 col-end-7 col-span-">
+            <button
+              className={
+                mintQuantity >= projectConfig.maxMintAmountPerTxn
+                  ? 'text-gray-500 cursor-default'
+                  : 'text-green-500 cursor-default'
+              }
+              onClick={incrementMintQuantity}
+            >
+              <FaPlusCircle />
+            </button>
+          </div>
+
+          <div className="col-start-1 col-end-7">
+            {active && !connErrMsg ? (
+              <>
+                {isPending || isMinting ? (
+                  <button
                     type="button"
-                    onClick={connectWallet}
-                >
-                    Mint
-                </button>
-            ) : correctNetwork ? (
-                <button
-                        className="font-bold"
-                >
-                    Mint
-                </button>
+                    className="flex justify-center items-center rounded px-4 py-2 bg-red-700 font-bold w-40 cursor-not-allowed"
+                    disabled
+                  >
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    {isPending && 'Pending'}
+                    {isMinting && 'Minting'}
+                    {!isPending && !isMinting && 'Processing'}
+                  </button>
+                ) : (
+                  <button
+                    className={`rounded px-4 py-2 bg-blue-700 hover:bg-blue-600 font-bold w-40`}
+                    onClick={mintTicket}
+                  >
+                    Mint Tickets
+                  </button>
+                )}
+              </>
             ) : (
-                        <Tooltip disableFocusListener title="Swith to correct Network">
-                <button
-                            className="flex font-bold"
-                            type="button"
-                                onClick={() => handleNetworkSwitch("polygon")}
-                >
-                                <svg className="hidden md:block mr-2 justify-center content-center" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                            </svg>
-                    Switch to the right Network           
-                </button>
-                        </Tooltip>
-                        
+              <button
+                type="button"
+                className={`rounded px-4 py-2 bg-red-700 font-bold w-40 cursor-not-allowed`}
+                disabled={true}
+                onClick={mintTicket}
+              >
+                Mint Tickets
+              </button>
             )}
-            <ErrorMessage message={error} />
+          </div>
+          <div>
+            {mintMessage && (
+              <span
+                className={
+                  mintError
+                    ? 'text-red-600 text-xs mt-2 block'
+                    : 'text-green-600 text-xs mt-2 block'
+                }
+              >
+                {mintMessage}
+              </span>
+            )}
+          </div>
+               <div className="text-gray-400 mt-2">
+        Please make sure you are connected to the correct address and the
+        correct network ({projectConfig.networkName}) before purchasing. The
+        operation cannot be undone after purchase.
+      </div>
         </div>
 
-
-    );
-};
-
-export default MintBtn;
+   
+      </div>
+    </>
+  );
+}

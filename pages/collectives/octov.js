@@ -5,72 +5,13 @@ import Typography from '@material-ui/core/Typography';
 import SocialIcon from 'components/social-icons';
 import dynamic from 'next/dynamic';
 import MintBtn from 'components/MintBtn';
-import axios from 'axios';
-import Web3Modal from 'web3modal';
-
-const ConnectWallet = dynamic(() => import('../../components/ConnectWallet'), {
-    ssr: false,
-});
+import ConnectWallet from 'components/DownloadTicket';
 
 
 export default function Octov({ locale, availableLocales }) {
 
-    const [showModal, setShowModal] = useState(false);
-    // Constants
-  const MINT_PRICE = 0.03;
-  const MAX_MINT = 1;
 
-  // UI state
-  const [mintQuantity, setMintQuantity] = useState(1);
-  const mintQuantityInputRef = useRef();
-  const [mintError, setMintError] = useState(false);
-  const [mintMessage, setMintMessage] = useState('');
-  const [mintLoading, setMintLoading] = useState(false);
-
-  async function mintNFTs() {
-    // Check quantity
-    if ( mintQuantity < 1 ) {
-      setMintMessage('You need to mint at least 1 NFT.')
-      setMintError(true)
-      mintQuantityInputRef.current.focus()
-      return
-    }
-    if ( mintQuantity > MAX_MINT ) {
-      setMintMessage('You can only mint a maximum of 10 NFTs.')
-      setMintError(true)
-      mintQuantityInputRef.current.focus()
-      return
-    }
-
-    // Get wallet details
-    if(!hasEthereum()) return
-    try {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner()
-
-      try {
-        const address = await signer.getAddress()
-
-        setMintLoading(true);
-          // Interact with contract
-          const contract = new ethers.Contract(process.env.NEXT_PUBLIC_MINTER_ADDRESS, Minter.abi, signer)
-          const totalPrice = MINT_PRICE * mintQuantity
-          const transaction = await contract.mint(mintQuantity, { value: ethers.utils.parseEther(totalPrice.toString()) })
-          await transaction.wait()
-
-          mintQuantityInputRef.current.value = 0
-          setMintMessage(`Congrats, you minted ${mintQuantity} token(s)!`)
-          setMintError(false)
-      } catch {
-        setMintMessage('Connect your wallet first.');
-        setMintError(true)
-      }
-    } catch(error) {
-        setMintMessage(error.message)
-        setMintError(true)
-    }
-    setMintLoading(false)
-  }
+  
 
     return (
       <>
@@ -155,53 +96,17 @@ export default function Octov({ locale, availableLocales }) {
         <div className="text-center">
           <Typography variant="h3">GoldEvent Access</Typography>
         </div>
+
         <div className="pt-10 flex items-center justify-center">
           <card className="w-72 rounded-lg border shadow-md flex flex-col p-5">
             <div className="flex flex-col items-center">
               <div className="relative p-6 flex-auto">
                 <p className="my-4 text-slate-500 text-lg leading-relaxed">NFT IMAGE111</p>
               </div>
-              <button
-                className="mt-10 rounded py-2 px-4 border-2 hover:bg-green-500 hover:text-gray-50 text-sm"
-                onClick={() => setShowModal(true)}
-              >
-                Mint - 0.5 eth
+              <button className="mt-10 rounded py-2 px-4 border-2 hover:bg-green-500 hover:text-gray-50 text-sm">
+                Price - 0.5 eth
               </button>
-              <div>
-                {showModal ? (
-                  <>
-                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                      <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                        {/*content*/}
-                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                          {/*header*/}
-                          <div className="flex p-5 border-b border-solid border-slate-200 rounded-t justify-center items-center">
-                            <h3 className="text-3xl font-semibold text-black">GoldEvent X</h3>
-                          </div>
-                          {/*body*/}
-                          <div className="relative p-6 flex-auto">
-                            <p className="my-4 text-slate-500 text-lg leading-relaxed text-black">
-                              NFT IMAGE111
-                            </p>
-                          </div>
-                          {/*footer*/}
-                          <div className="grid grid-cols-2 gap-2 pt-5 pb-5">
-                            <button
-                              className="ml-5 border-2 justify-center mt-6 py-2 px-4 font-bold rounded-lg shadow-md hover:shadow-lg text-red-500"
-                              type="button"
-                              onClick={() => setShowModal(false)}
-                            >
-                              Close
-                            </button>
-                            <MintBtn />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                  </>
-                ) : null}
-              </div>
+
               <div className="h-0.5 bg-gray-200 w-full my-5"> </div>
             </div>
             <div className="flex flex-col px-3">
@@ -264,6 +169,7 @@ export default function Octov({ locale, availableLocales }) {
                 <div className="col-span-4 text-sm font-light">guaranteed access</div>
               </div>
             </div>
+            <MintBtn />
           </card>
         </div>
         <div className="text-center">

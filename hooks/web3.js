@@ -13,10 +13,22 @@ const providerOptions = {
 };
 
 const web3Modal = new Web3Modal({
-    network: 'mainnet',
-    cacheProvider: true,
-    providerOptions,
+  network: 'mainnet',
+  cacheProvider: true,
+  providerOptions,
 });
+
+// Check for MetaMask wallet browser extension
+function hasEthereum() {
+  return typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
+};
+
+// Request wallet account
+async function requestAccount() {
+  await window.ethereum.request({ method: 'eth_requestAccounts' });
+};
+
+export { hasEthereum, requestAccount };
 
 export function useWeb3Modal() {
     const [provider, setProvider] = useState(undefined);
@@ -26,7 +38,7 @@ export function useWeb3Modal() {
     // been set (e.g. page refresh)
     if (web3Modal.cachedProvider && !provider) {
         connectWallet();
-    }
+    };
 
     async function connectWallet() {
         try {
@@ -39,13 +51,13 @@ export function useWeb3Modal() {
         } catch (e) {
             setError('Error connecting to metamask');
             console.log('Error connecting to metamask', e);
-        }
-    }
+        };
+    };
 
     function disconnectWallet() {
         web3Modal.clearCachedProvider();
         setProvider(undefined);
-    }
+    };
 
     return { connectWallet, disconnectWallet, provider, error };
-}
+};

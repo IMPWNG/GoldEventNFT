@@ -5,7 +5,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Typography from '@material-ui/core/Typography';
 import SocialIcon from '@/components/social-icons';
 import dynamic from 'next/dynamic';
-const ConnectWallet = dynamic(() => import('../../components/ConnectWallet'), {
+const ConnectWallet = dynamic(() => import('../../components/DownloadTicket'), {
     ssr: false,
 });
 

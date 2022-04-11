@@ -8,7 +8,7 @@ import MintBtn from 'components/MintBtn';
 import axios from 'axios';
 import Web3Modal from 'web3modal';
 
-const ConnectWallet = dynamic(() => import('../../components/ConnectWallet'), {
+const ConnectWallet = dynamic(() => import('../../components/DownloadTicket'), {
     ssr: false,
 });
 

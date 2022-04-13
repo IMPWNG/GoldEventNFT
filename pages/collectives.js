@@ -15,7 +15,7 @@ export default function Collectives({ locale, availableLocales }) {
             <div className="py-6 px-8 rounded-lg content-center">
               <h1 className="font-bold text-2xl mb-3 hover:cursor-pointer text-center underline">Octov</h1>
               <p className="tracking-wide text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, labore. Ea debitis beatae sequi deleniti.</p>
-              <div classNameName='flex justify-center'>
+              <div className='flex justify-center'>
                 <Link href="/collectives/octov">
                   <button className="border-2 justify-center mt-6 py-2 px-4 font-bold rounded-lg shadow-md hover:shadow-lg border-yellow-500">Get your GoldEvent NFT</button>
                 </Link>
@@ -32,7 +32,7 @@ export default function Collectives({ locale, availableLocales }) {
             <div className="py-6 px-8 rounded-lg content-center">
               <h1 className="font-bold text-2xl mb-3 hover:cursor-pointer text-center underline">TMO</h1>
               <p className="tracking-wide text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, labore. Ea debitis beatae sequi deleniti.</p>
-              <div classNameName='flex justify-center'>
+              <div className='flex justify-center'>
                 <Link href="/collectives/tmo">
                   <button className="border-2 justify-center mt-6 py-2 px-4 font-bold rounded-lg shadow-md hover:shadow-lg border-yellow-500">Get your GoldEvent NFT</button>
                 </Link>
@@ -49,7 +49,7 @@ export default function Collectives({ locale, availableLocales }) {
             <div className="py-6 px-8 rounded-lg content-center">
               <h1 className="font-bold text-2xl mb-3 hover:cursor-pointer text-center underline">La North</h1>
               <p className="tracking-wide text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, labore. Ea debitis beatae sequi deleniti.</p>
-              <div classNameName='flex justify-center'>
+              <div className='flex justify-center'>
                 <Link href="/collectives/lanorth">
                   <button className="border-2 justify-center mt-6 py-2 px-4 font-bold rounded-lg shadow-md hover:shadow-lg border-yellow-500">Get your GoldEvent NFT</button>
                 </Link>
@@ -66,7 +66,7 @@ export default function Collectives({ locale, availableLocales }) {
             <div className="py-6 px-8 rounded-lg content-center">
               <h1 className="font-bold text-2xl mb-3 hover:cursor-pointer text-center underline">This is House</h1>
               <p className="tracking-wide text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, labore. Ea debitis beatae sequi deleniti.</p>
-              <div classNameName='flex justify-center'>
+              <div className='flex justify-center'>
                 <Link href="/collectives/thisishouse">
                   <button className="border-2 justify-center mt-6 py-2 px-4 font-bold rounded-lg shadow-md hover:shadow-lg border-yellow-500">Get your GoldEvent NFT</button>
                 </Link>

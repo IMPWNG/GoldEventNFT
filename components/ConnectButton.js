@@ -5,7 +5,7 @@ import { useWeb3React } from '@web3-react/core';
 
 
 import projectConfig from 'config/config';
-import useEthereumProvider from '../hooks/useEthereumProvider.ts';
+import { useEthereumProvider } from '../hooks/useEthereumProvider.ts';
 import { injected } from '../utils/connector';
 
 export default function ConnectButton() {

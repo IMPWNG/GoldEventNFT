@@ -1,12 +1,12 @@
 import siteMetadata from 'data/siteMetadata';
 import { useRef, useState } from 'react';
-
+import ConnectWallet from 'components/WalletConnect';
 import Typography from '@material-ui/core/Typography';
 import SocialIcon from 'components/social-icons';
 
 import MintBtn from 'components/MintBtn';
-import ConnectButton from 'components/ConnectButton';
-
+import ConnectButton from 'components/ui/ConnectButton';
+import ConnectedWallet from 'components/ui/ConnectedWallet';
 
 
 export default function Octov({ locale, availableLocales }) {
@@ -97,8 +97,9 @@ export default function Octov({ locale, availableLocales }) {
         <div className="text-center">
           <Typography variant="h3">GoldEvent Access</Typography>
         </div>
-        <ConnectButton />
-
+        <div className="pt-5">
+          <ConnectedWallet />
+        </div>
         <div className="pt-10 flex items-center justify-center">
           <card className="w-72 rounded-lg border shadow-md flex flex-col p-5">
             <div className="flex flex-col items-center">

@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 
 
+
 export default function Collectives({ locale, availableLocales }) {
   const { t } = useTranslation();
 

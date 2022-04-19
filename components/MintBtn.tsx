@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import { hasEthereum } from '../utils/connector';
+import { hasEthereum } from '../utils/connector.ts'
 import GoldEventGen0 from '../artifacts/contracts/GoldEventGen0.sol/GoldEventGen0.json';
 import { ethers } from 'ethers';
-import projectConfig from 'config/config';
+import projectConfig from '../config/config.js';
 import { FaMinusCircle, FaPlusCircle } from 'react-icons/fa';
 import { useWeb3React } from '@web3-react/core';
 

@@ -1,12 +1,12 @@
-import siteMetadata from 'data/siteMetadata';
+import siteMetadata from '../../data/siteMetadata';
 import { useRef, useState } from 'react';
-import ConnectWallet from 'components/WalletConnect';
+import ConnectWallet from '../../components/WalletConnect';
 import Typography from '@material-ui/core/Typography';
-import SocialIcon from 'components/social-icons';
+import SocialIcon from '../../components/social-icons';
 
-import MintBtn from 'components/MintBtn';
-import ConnectButton from 'components/ui/ConnectButton';
-import ConnectedWallet from 'components/ui/ConnectedWallet';
+import MintBtn from '../../components/MintBtn';
+import ConnectButton from '../../components/ui/ConnectButton.tsx';
+import ConnectedWallet from '../../components/ui/ConnectedWallet';
 
 
 export default function Octov({ locale, availableLocales }) {

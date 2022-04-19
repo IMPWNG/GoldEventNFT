@@ -1,11 +1,11 @@
-import '@/css/tailwind.css';
+import '../css/tailwind.css';
 import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
-import LayoutWrapper from 'components/LayoutWrapper';
+import LayoutWrapper from '../components/LayoutWrapper';
 import { Web3ReactProvider } from '@web3-react/core';
 import { ethers } from 'ethers';
 
-function getLibrary(provider) {
+function getLibrary(provider: any) {
   return new ethers.providers.Web3Provider(provider);
 }
 

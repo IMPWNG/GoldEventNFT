@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import ConnectButton from './ConnectButton';
-import { injected } from '../../hooks/useEthereumProvider.ts';
+import { injected } from '../../hooks/useEthereumProvider';
 
 
 

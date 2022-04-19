@@ -4,8 +4,8 @@ import { FaWallet } from 'react-icons/fa';
 import { useWeb3React } from '@web3-react/core';
 
 
-import projectConfig from 'config/config';
-import { useEthereumProvider } from '../../hooks/useEthereumProvider.ts';
+import projectConfig from '../../config/config';
+import { useEthereumProvider } from '../../hooks/useEthereumProvider';
 import { injected } from '../../utils/connector';
 
 export default function ConnectButton() {

@@ -26,25 +26,5 @@
     ],
     "exclude": [
         "node_modules"
-    ],
-    "baseUrl": [
-        "."
-    ],
-    "paths": {
-        "@/components/*": [
-            "FrontEnd/components/*"
-        ],
-        "@/data/*": [
-            "FrontEnd/css/data/*"
-        ],
-        "@/layouts/*": [
-            "layouts/*"
-        ],
-        "@/lib/*": [
-            "lib/*"
-        ],
-        "@/css/*": [
-            "css/*"
-        ]
-    }
+    ]
 }

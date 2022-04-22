@@ -1,7 +1,7 @@
 import Link from './NextLink';
-import SocialIcon from './social-icons';
+
 import { FaMailBulk, FaTwitter, FaFacebookF, FaInstagram } from 'react-icons/fa';
-import projectConfig from '../config/config';
+import projectConfig from '../config/projectConfig';
 import dynamic from 'next/dynamic';
 
 
@@ -30,9 +30,50 @@ export default function Footer() {
               >
             <FaMailBulk />
               </a>
-          <SocialIcon kind="facebook" href={projectConfig.facebook} size="6" />
-          <SocialIcon kind="instagram" href={projectConfig.instagram} size="6" />
-          <SocialIcon kind="twitter" href={projectConfig.twitter} size="6" />
+        <a
+          href={projectConfig.twitterUrl}
+          aria-label={`${projectConfig.nftName} on Twitter`}
+          rel="noopener noreferrer"
+          target="_blank"
+          data-tip="Twitter"
+          data-for="footer"
+          className="bg-gray-700 hover:bg-gray-600 rounded-full p-2"
+        >
+          <FaTwitter />
+        </a>
+        <a
+          href={projectConfig.twitterUrl}
+          aria-label={`${projectConfig.nftName} on Twitter`}
+          rel="noopener noreferrer"
+          target="_blank"
+          data-tip="Twitter"
+          data-for="footer"
+          className="bg-gray-700 hover:bg-gray-600 rounded-full p-2"
+        >
+          <FaFacebookF />
+        </a>
+        <a
+          href={projectConfig.twitterUrl}
+          aria-label={`${projectConfig.nftName} on Twitter`}
+          rel="noopener noreferrer"
+          target="_blank"
+          data-tip="Twitter"
+          data-for="footer"
+          className="bg-gray-700 hover:bg-gray-600 rounded-full p-2"
+        >
+          <FaMailBulk />
+        </a>
+        <a
+          href={projectConfig.twitterUrl}
+          aria-label={`${projectConfig.nftName} on Twitter`}
+          rel="noopener noreferrer"
+          target="_blank"
+          data-tip="Twitter"
+          data-for="footer"
+          className="bg-gray-700 hover:bg-gray-600 rounded-full p-2"
+        >
+          <FaInstagram />
+        </a>
 
         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
           <Link href="/">
@@ -41,5 +82,7 @@ export default function Footer() {
         </div>
     </div>
     </footer>
+
+    
   )
 }

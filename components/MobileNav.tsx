@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import Link from './NextLink';
-import headerNavLinks from '../data/headerNavLinks';
+import NextLink from './NextLink';
 import useTranslation from 'next-translate/useTranslation';
 
 const MobileNav = () => {
-  const { t } = useTranslation();
   const [navShow, setNavShow] = useState(false);
 
   const onToggleNav = () => {
@@ -59,21 +57,21 @@ const MobileNav = () => {
           className="fixed w-full h-full cursor-auto focus:outline-none"
           onClick={onToggleNav}
         ></button>
-        <nav className="fixed h-full mt-8">
-          {headerNavLinks.map((link) => (
-            <div key={link.title} className="px-12 py-4">
-              <Link
-                href={link.href}
+        <div className="fixed h-full mt-8">
+
+    
+              <NextLink
+                href="/"
                 className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
                 onClick={onToggleNav}
               >
-                {t(`headerNavLinks:${link.title.toLowerCase()}`)}
-              </Link>
+ 
+            </NextLink>
             </div>
-          ))}
-        </nav>
+
+        </div>
       </div>
-    </div>
+
   )
 }
 

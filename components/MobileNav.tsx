@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Link from './Link';
+import Link from './NextLink';
 import headerNavLinks from '../data/headerNavLinks';
 import useTranslation from 'next-translate/useTranslation';
 

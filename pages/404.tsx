@@ -1,4 +1,4 @@
-import Link from '../components/Link';
+import Link from '../components/NextLink';
 import useTranslation from 'next-translate/useTranslation';
 
 export default function FourZeroFour() {

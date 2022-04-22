@@ -1,5 +1,15 @@
-const siteMetadata = {
-  title: { en: 'Next.js Starter Blog', fr: 'Starter de blog NextJs' },
+const projectConfig = {
+  nftName: 'GoldEvent',
+
+  nftSymbol: 'GLDE',
+
+  siteDomain: 'www.yourdomain.com',
+
+  twitterUrl: 'https://twitter.com/your_twitter_handle',
+
+  discordUrl: 'https://discord.gg/your_discord_invite_code',
+
+title: { en: 'Next.js Starter Blog', fr: 'Starter de blog NextJs' },
   author: 'IMPWNG',
   headerTitle: { en: 'GoldEvent', fr: 'GoldEvent' },
   // description: 'A blog created with Next.js and Tailwind.css',
@@ -14,6 +24,8 @@ const siteMetadata = {
   facebook: 'https://facebook.com',
   instagram: 'https://instagram.com',
   locale: 'en-US',
-}
 
-module.exports = siteMetadata
+  
+};
+
+export default projectConfig;

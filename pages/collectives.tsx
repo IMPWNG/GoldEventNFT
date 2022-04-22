@@ -1,4 +1,4 @@
-import Link from '../components/Link';
+import Link from '../components/NextLink';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 

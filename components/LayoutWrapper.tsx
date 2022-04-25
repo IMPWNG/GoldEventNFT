@@ -10,19 +10,22 @@ type Props = {
   pageTitle?: string;
 };
 
-export default function LayoutWrapper({ children, pageTitle  } : Props)   {
+export default function LayoutWrapper({ children, pageTitle }: Props) {
 
 
   return (
-   <>
-    <Meta pageTitle={pageTitle} />
-      <div className="max-w-3xl px-4 mx-auto sm:px-6 xl:max-w-5xl xl:px-0">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </div>
-    
+    <>
+      <SectionContainer>
+      <Meta pageTitle={pageTitle} />
 
-   </>
+      <Header />
+      <main>{children}</main>
+      <Footer />
+      </SectionContainer>
+
+
+
+
+    </>
   );
 }

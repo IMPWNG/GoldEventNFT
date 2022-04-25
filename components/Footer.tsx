@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer>
       <div className="flex flex-col items-center mt-16">
-        <ReactTooltip id="footerr"
+        <ReactTooltip id="footer"
           place="bottom"
           type="dark"
           effect="solid"

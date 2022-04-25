@@ -4,28 +4,30 @@ import Footer from './Footer';
 import Header from './Header';
 import Meta from './meta/Meta';
 import SectionContainer from './SectionContainer';
+import { ReactNode } from 'react';
 
 type Props = {
-  children: React.ReactNode;
-  pageTitle?: string;
+  children: ReactNode;
 };
 
-export default function LayoutWrapper({ children, pageTitle }: Props) {
+const LayoutWrapper = ({ children }: Props) => {
 
 
   return (
-    <>
+   <>
+    <Meta />
       <SectionContainer>
-      <Meta pageTitle={pageTitle} />
+        <div className="flex flex-col justify-between">
+        <Header />
+          <main className="mb-auto">{children}</main>
+        <Footer />
+        </div>
+        </SectionContainer>
 
-      <Header />
-      <main>{children}</main>
-      <Footer />
-      </SectionContainer>
+    
 
-
-
-
-    </>
+   </>
   );
 }
+
+export default LayoutWrapper;
